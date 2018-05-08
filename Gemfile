@@ -35,9 +35,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'coffee-script-source', '1.8.0'
 
-gem 'bootstrap-sass'
-
-gem 'jquery-rails'
 
 
 # Use Capistrano for deployment

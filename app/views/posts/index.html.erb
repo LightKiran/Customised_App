@@ -1,6 +1,18 @@
-<% @posts.each do |post| %>
-<h2><%= post.title %></h2>
-<div><%= truncate(post.body, :length => 10) %></div>
-<%= link_to "Read Posts", post %>
-<%end %>
 
+      <!-- Blog Post -->
+      <% @posts.each do |post| %>
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <h2 class="card-title"><h2><%= post.title %></h2></h2>
+              <p class="card-text"><%= truncate(post.body, :length => 50) %></p>
+              <%= link_to "Read More", post %>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          Posted on <%= post.created_at %>
+        </div>
+      </div>
+      <%end %>

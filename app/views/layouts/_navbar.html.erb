@@ -1,24 +1,39 @@
-<nav class="navbar navbar-inverse">
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Blog Home", root_path %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <% if !user_signed_in? %>
-        
-          <li class="active"><%= link_to "Login", new_user_session_path %></li>
-           <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
-        <% end %>
-        </ul>
 
-        <% if user_signed_in? %>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><%= link_to "New Post", new_post_path %></li>
-              <li class="active"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-              <li class="active"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-            </ul>
-        <% end %>
-      
-    </div><!-- /.navbar-collapse -->
-</nav>
+
+  <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand"><%= link_to "Blog Home", root_path %></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <% if !user_signed_in? %>
+            <li class="nav-item nav-link">
+              <%= link_to "Login", new_user_session_path %>
+            </li>
+            <li class="nav-item nav-link">
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <% end %>
+            <% if user_signed_in? %>
+            <li class="nav-item nav-link" >
+              <%= link_to "New Post", new_post_path %>
+            </li>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item"><%= link_to 'Edit Profile', edit_user_registration_path %></a>
+                <a class="dropdown-item"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></a>
+              </div>
+            </li>
+            <% end %>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
